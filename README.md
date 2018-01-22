@@ -1,5 +1,7 @@
 # Prometheus KairosDB Adapter
 
+[![Build Status](https://travis-ci.org/chosenken/prometheus-kairosdb-adapter.svg?branch=master)](https://travis-ci.org/chosenken/prometheus-kairosdb-adapter)
+
 This is a write adapter that receives samples via Prometheus remote write protocol and stores them in KairosDB.  Any labels attached to the metric will be added to the KairosDB metric as a Tag.
 
 As of now this adapter only supports writing to KairosDB.

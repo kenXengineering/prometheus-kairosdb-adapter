@@ -1,0 +1,12 @@
+services:
+  - docker
+
+language: go
+
+go_import_path: github.com/chosenken/prometheus-kairosdb-adapter
+
+go:
+  - 1.9
+
+script:
+  - make buildit
