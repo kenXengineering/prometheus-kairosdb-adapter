@@ -10,6 +10,7 @@ Building
 ---
 
 ```bash
+# Build the binary
 make
 
 # Build the docker image with custom docker hub username, image name, and version
@@ -20,7 +21,7 @@ make DOCKERHUB_USERNAME=<name> IMAGE_NAME=prometheus-kairosdb-adapter VERSION=v1
 
 # Push the docker image with custom docker hub username, image name, and version
 # NOTE:  You can call push without calling image, push will build the image
-make DOCKERHUB_USERNAME=<name> IMAGE_NAME=prometheus-kairosdb-adapter VERSION=v1.0 image push
+make DOCKERHUB_USERNAME=<name> IMAGE_NAME=prometheus-kairosdb-adapter VERSION=v1.0 push
 ```
 
 Usage
