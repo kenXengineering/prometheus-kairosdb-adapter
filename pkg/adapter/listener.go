@@ -12,7 +12,8 @@ import (
 	"github.com/prometheus/prometheus/prompb"
 )
 
-// listenAndServe will listen
+// listenAndServe will listen on the given port and send metrics to the
+// adapters HandleMetrics function
 func listenAndServe(adapter Adapter, port int64) {
 	logger := log.WithField("function", "listenAndServe")
 

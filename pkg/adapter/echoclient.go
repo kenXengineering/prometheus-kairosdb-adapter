@@ -29,13 +29,14 @@ func (c *EchoClient) Start() {
 
 // HandleMetrics will take in the prometheus metrics and print out the formatted metrics
 // or the metrics in JSON that KairosDB expects if the --json flag is specified
-func (c *EchoClient) HandleMetrics(req *prompb.WriteRequest) {
+func (c *EchoClient) HandleMetrics(req *prompb.WriteRequest) error {
 	log.Debug("Got Metric")
 	if c.opts.PrintJson {
 		c.echoJson(req)
-		return
+		return nil
 	}
 	c.echoFormatted(req)
+	return nil
 }
 
 func (c *EchoClient) echoFormatted(req *prompb.WriteRequest) {
