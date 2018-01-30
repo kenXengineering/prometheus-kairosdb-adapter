@@ -1,4 +1,5 @@
-IMAGE_NAME=chosenken/prometheus-kairosdb-adapter
+DOCKERHUB_USERNAME ?= chosenken
+IMAGE_NAME ?= prometheus-kairosdb-adapter
 
 GOTAGS ?= prometheus-kairosdb-adapter
 GOFILES ?= $(shell go list ./... | grep -v /vendor/)
@@ -24,12 +25,14 @@ install: staticcheck gosimple
 run:
 	go run main.go
 
+test:
+	go test $(shell go list ./... | grep -v /vendor/)
 
 image:
-	docker build -t $(IMAGE_NAME):$(VERSION) .
+	docker build -t $(DOCKERHUB_USERNAME)/$(IMAGE_NAME):$(VERSION) .
 
 push: image
-	docker push $(IMAGE_NAME):$(VERSION)
+	docker push $(DOCKERHUB_USERNAME)/$(IMAGE_NAME):$(VERSION)
 
 format:
 	@echo ">> Running go fmt"

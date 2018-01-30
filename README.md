@@ -11,6 +11,16 @@ Building
 
 ```bash
 make
+
+# Build the docker image with custom docker hub username, image name, and version
+# DOCKERHUB_USERNAME defaults to chosenken
+# IMAGE_NAME defaults to prometheus-kairosdb-adapter
+# VERSION defaults to latest
+make DOCKERHUB_USERNAME=<name> IMAGE_NAME=prometheus-kairosdb-adapter VERSION=v1.0 image
+
+# Push the docker image with custom docker hub username, image name, and version
+# NOTE:  You can call push without calling image, push will build the image
+make DOCKERHUB_USERNAME=<name> IMAGE_NAME=prometheus-kairosdb-adapter VERSION=v1.0 image push
 ```
 
 Usage
@@ -37,6 +47,16 @@ Running
 ---
 ```bash
 ./prometheus_kairosdb_adapter --kairosdb-url http://localhost:8080
+```
+
+Running in Docker
+---
+```bash
+# KairosDB is on a different host
+docker run --name prometheus-kairosdb-adapter -d -p 9201:9201 chosenken/prometheus-kairosdb-adapter --kairos-url=http://<kairosDB Address>:8080
+
+# KairosDB is on the same host but not in docker
+docker run --name prometheus-kairosdb-adapter -d -p 9201:9201 --net="host" chosenken/prometheus-kairosdb-adapter -kairos-url=http://localhost:8080
 ```
 
 Configure Prometheus
