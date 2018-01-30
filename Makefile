@@ -13,6 +13,7 @@ all: build
 dep:
 	dep ensure -v
 	dep prune -v
+	go get -u -v github.com/goreleaser/goreleaser
 
 buildit:
 	go build -o prometheus-kairosdb-adapter main.go
@@ -62,4 +63,10 @@ gosimple:
 tools:
 	@echo ">> installing some extra tools"
 	@go get -u -v honnef.co/go/tools/...
+
+publish-test:
+	goreleaser --skip-publish --skip-validate --rm-dist
+
+publish:
+	goreleaser --skip-validate --rm-dist
 
