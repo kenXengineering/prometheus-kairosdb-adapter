@@ -1,0 +1,17 @@
+builds:
+  - main: main.go
+    binary: prometheus-kairosdb-adapter
+    goos:
+      - windows
+      - darwin
+      - linux
+    goarch:
+      - amd64
+archive:
+  format: tar.gz
+  format_overrides:
+    - goos: windows
+      format: zip
+  files:
+    - LICENSE
+    - README.md
